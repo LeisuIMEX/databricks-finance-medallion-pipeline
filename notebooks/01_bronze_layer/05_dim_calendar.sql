@@ -12,12 +12,17 @@ CREATE OR REPLACE TABLE bronze_dim_calendar
 USING DELTA
 AS
 SELECT
-    ID_FECHA AS date_id,
     FECHA AS calendar_date,
-    ANIO AS year,
-    MES AS month,
-    NOMBRE_MES AS month_name,
-    TRIMESTRE AS quarter,
+    `Año` AS year,
+    Mes AS month_number,
+    Periodo AS period,
+    Mes_Año AS month_year,
+    NrDia AS day_number,
+    Trimestre AS quarter_name,
+    DiaSemana AS week_number,
+    NombreDia AS week_name,
+    Mes_Corto AS short_month_name,
+    MesNombreFull AS month_name,
     current_timestamp() AS ingestion_time,
     'sample_dim_calendar.csv' AS source_file
 FROM read_files(
