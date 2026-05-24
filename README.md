@@ -32,8 +32,10 @@ databricks-finance-medallion-pipeline
 │
 ├── README.md
 └── .gitignore
+```
 
 ---------------------------------------------------------------------------------
+## Data Flow
 
 The project follows a Medallion Architecture approach:
 
