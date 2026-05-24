@@ -14,6 +14,7 @@ AS
 SELECT
     ID_CATEGORIA AS category_id,
     CATEGORIA AS category_name,
+    BUDGET_2026 AS budget_2026,
     current_timestamp() AS ingestion_time,
     'sample_dim_category.csv' AS source_file
 FROM read_files(
