@@ -1,40 +1,80 @@
-## Notebook Structure
+## Repository Structure
 
-The Databricks workspace is organized by Medallion layers:
+```text
+databricks-finance-medallion-pipeline
+│
+├── notebooks
+│   ├── 01_bronze_layer
+│   │   ├── 00_configuration.sql
+│   │   ├── 01_fact_expenses.sql
+│   │   ├── 02_incremental_load_fact_expenses.sql
+│   │   ├── 03_dim_category.sql
+│   │   ├── 04_dim_establishment.sql
+│   │   └── 05_dim_calendar.sql
+│   │
+│   ├── 02_silver_layer
+│   │   ├── load_silver_tables
+│   │   │   ├── 01_fact_expenses.sql
+│   │   │   ├── 02_dim_category.sql
+│   │   │   ├── 03_dim_establishment.sql
+│   │   │   └── 04_dim_calendar.sql
+│   │   │
+│   │   └── data_validation
+│   │       ├── 01_count_rows.sql
+│   │       └── 02_validate_tables.sql
+│   │
+│   └── 03_gold_layer
+│       └── load_gold_tables
+│           ├── 01_fact_finance.sql
+│           ├── 02_dim_category.sql
+│           ├── 03_dim_establishment.sql
+│           └── 04_dim_calendar.sql
+│
+├── README.md
+└── .gitignore
 
-### 01 Bronze Layer
+---------------------------------------------------------------------------------
 
-This layer loads the raw finance data and prepares the base Delta tables.
+The project follows a Medallion Architecture approach:
 
-Notebooks included:
+### Bronze Layer
 
-- Configuration
-- Fact Finance initial load
-- Fact Finance incremental load
-- Category dimension
-- Establishment dimension
-- Calendar dimension
+The Bronze layer stores raw data loaded from CSV files into Delta tables.
 
-### 02 Silver Layer
+Tables:
 
-This layer cleans, standardizes and validates the data before analytical modeling.
+- `bronze_fact_expenses`
+- `bronze_dim_category`
+- `bronze_dim_establishment`
+- `bronze_dim_calendar`
 
-Notebooks included:
+### Silver Layer
 
-- Fact Finance cleaning
-- Category dimension cleaning
-- Establishment dimension cleaning
-- Calendar dimension cleaning
+The Silver layer cleans, standardizes and validates the data.
+
+Main transformations:
+
+- Data type casting
+- Text trimming
+- Decimal normalization
+- Date conversion
+- Null validation
 - Row count validation
-- Table validation checks
 
-### 03 Gold Layer
+Tables:
 
-This layer creates the final analytical model consumed by Power BI.
+- `silver_fact_expenses`
+- `silver_dim_category`
+- `silver_dim_establishment`
+- `silver_dim_calendar`
 
-Notebooks included:
+### Gold Layer
 
-- Fact Finance
-- Dim Category
-- Dim Establishment
-- Dim Calendar
+The Gold layer contains the final analytical model consumed by Power BI.
+
+Tables:
+
+- `gold_fact_finance`
+- `gold_dim_category`
+- `gold_dim_establishment`
+- `gold_dim_calendar`
