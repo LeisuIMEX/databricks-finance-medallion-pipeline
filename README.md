@@ -80,3 +80,43 @@ Tables:
 - `gold_dim_category`
 - `gold_dim_establishment`
 - `gold_dim_calendar`
+
+-----------------------------------------------------------------------------
+
+## Screenshots
+
+### Power BI Desktop connection to Databricks
+
+![Power BI Desktop Databricks Connection](powerbi/screenshots/01_powerbi_desktop_databricks_connection.png)
+
+This screenshot shows Power BI Desktop connected to the Databricks Gold Layer through Databricks SQL Warehouse.
+
+### Power BI Model View
+
+![Power BI Model View](powerbi/screenshots/02_powerbi_model_view.png)
+
+This screenshot shows the Power BI semantic model based on a star schema using the Gold tables.
+
+### Databricks Scheduled Job
+
+![Databricks Scheduled Job](powerbi/screenshots/04_databricks_scheduled_job.png)
+
+This screenshot shows the scheduled Databricks Job that runs the pipeline before the Power BI refresh.
+
+### Power BI Service Scheduled Refresh
+
+![Power BI Service Scheduled Refresh](powerbi/screenshots/06_powerbi_service_scheduled_refresh.png)
+
+This screenshot shows the Power BI Service scheduled refresh configured after the Databricks Job execution.
+
+### Power BI Refresh History
+
+![Power BI Refresh History](powerbi/screenshots/07_powerbi_refresh_history.png)
+
+This screenshot shows a completed scheduled refresh in Power BI Service.
+
+### Dashboard Overview
+
+![Dashboard Overview](powerbi/screenshots/08_dashboard_overview.png)
+
+This screenshot shows the final Power BI report consuming the Gold Layer data.
